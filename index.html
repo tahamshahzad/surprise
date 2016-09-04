@@ -3,30 +3,29 @@
 
 <head>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-  .blinkingCursor {
-
-
-
-    border-left:2px solid rgba(255,255,255,0.9);;
-    color:transparent;
-
-  }
-.blink {
-  opacity: 1;
-  animation-name: blink;
-  animation-duration: 400ms;
-  animation-direction: alternate;
-  animation-iteration-count: infinite;
+.stableCursor {
+  border-right:2px solid rgba(255,255,255,0.9);
 }
+
+.blink {
+
+  animation : blink 1s steps(2) infinite;
+}
+
 @keyframes blink {
-  from {opacity: 1}
-  to {opacity: 0}
+  from {
+    border-right:2px solid rgba(255,255,255,0);
+  }
+  to {
+    border-right:2px solid rgba(255,255,255,0.9);
+  }
 }
 #typingTest {
     width:100%;
     text-align: center;
-    font-size: 55px;
+    font-size: 50px;
     color:rgba(255,255,255,0.9);
     font-weight: 300;
 }
@@ -56,22 +55,23 @@ font-family: 'Open Sans', sans-serif;
 <body>
   <div class="wrapper">
   <div id="typingTest">
-    <span class="typedContent">
+    <span class="typedContent blinkingCursor blink">
 
     </span>
 
   </div>
-  </div>
+    </div>
   <script src="dist/typingJs.js"> </script>
   <script>
-  window[typeName].run({
+  var effect  = new TypedJs();
+  effect.run({
     id : "typingTest",
-    data : ["Hey, Qurat! :)", "That day i told you i am working on a plugin, but", "didn't show you the end product", "well, dont think i wanted to make something special for you :P","I just finished this and wanted to show and tell you that", "I LOVE YOU <3", ":)"],
-    typingSpeed : 100,
+    data : ["Branding", "Development", "Design", "logo Design","leppel", "Agency", ":)"],
+    typingSpeed : 130,
     holdingTime : 1000,
     writingTime : 200,
     repeat : true ,
-    cursor : true
+    showCursor : true
   });
   </script>
 </body>
